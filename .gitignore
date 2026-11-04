@@ -1,0 +1,20 @@
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+target/
+*.class
+
+# Configurações locais
+application-local.yaml
+application-prod.yaml
+
+# IDEs
+.idea/
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
