@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Organize seus livros e acompanhe suas leituras no Read.me.">
+    <title>Read.me | Minha biblioteca</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/library.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="../index.html" class="logo">Read<span>.me</span></a>
+
+        <nav class="navigation">
+            <a href="../index.html">Início</a>
+            <a href="library.html" class="active">Biblioteca</a>
+            <a href="journal.html">Diário</a>
+            <a href="stats.html">Estatísticas</a>
+        </nav>
+    </header>
+
+    <main class="library-container">
+
+        <!-- Apresentação -->
+        <section class="library-header">
+            <div>
+                <p class="eyebrow">SEU UNIVERSO LITERÁRIO</p>
+                <h1>Minha biblioteca</h1>
+                <p>Todos os livros que fazem parte da sua jornada.</p>
+            </div>
+
+            <button type="button" id="open-book-modal" class="btn btn-primary">
+            + Adicionar livro
+            </button>
+        </section>
+
+        <!-- Indicadores -->
+        <section class="library-summary">
+
+            <article class="card library-stat">
+                <span>Total de livros</span>
+                <strong id="total-books">0</strong>
+            </article>
+
+            <article class="card library-stat">
+                <span>Quero ler</span>
+                <strong id="want-to-read">0</strong>
+            </article>
+
+            <article class="card library-stat">
+                <span>Lendo</span>
+                <strong id="currently-reading">0</strong>
+            </article>
+
+            <article class="card library-stat">
+                <span>Concluídos</span>
+                <strong id="finished-books">0</strong>
+            </article>
+
+        </section>
+
+        <!-- Busca e filtros -->
+        <section class="library-tools">
+
+            <div class="search-container">
+                <input
+                    type="search"
+                    id="search-book"
+                    class="form-control"
+                    placeholder="Buscar por título ou autor..."
+                >
+            </div>
+
+            <div class="filter-container">
+
+                <select id="filter-status" class="form-control">
+                    <option value="">Todos os status</option>
+                    <option value="WANT_TO_READ">Quero ler</option>
+                    <option value="READING">Lendo</option>
+                    <option value="READ">Concluídos</option>
+                </select>
+
+                <select id="filter-genre" class="form-control">
+                    <option value="">Todos os gêneros</option>
+                </select>
+
+            </div>
+
+        </section>
+
+        <!-- Grade de livros -->
+        <section class="library-books-section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SUA COLEÇÃO</p>
+                    <h2>Todos os livros</h2>
+                </div>
+            </div>
+
+            <div id="books-list" class="books-grid">
+                <div class="empty-state">
+                    <p>Seus livros aparecerão aqui.</p>
+                </div>
+            </div>
+
+        </section>
+
+        
+<!-- Modal de cadastro de livro -->
+<div id="book-modal" class="modal-overlay">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">NOVA HISTÓRIA</p>
+                <h2>Adicionar livro</h2>
+                <p>Registre um novo livro na sua coleção.</p>
+            </div>
+
+            <button type="button" id="close-book-modal" class="modal-close">
+                &times;
+            </button>
+        </div>
+
+        <form id="book-form" class="book-form">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="title">Título *</label>
+                    <input type="text" id="title" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Autor *</label>
+                    <input type="text" id="author" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="genre">Gênero</label>
+                    <input type="text" id="genre" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="total-pages">Número de páginas *</label>
+                    <input type="number" id="total-pages" class="form-control" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="current-page">Página atual</label>
+                    <input type="number" id="current-page" class="form-control" min="0" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status da leitura</label>
+                    <select id="status" class="form-control">
+                        <option value="WANT_TO_READ">Quero ler</option>
+                        <option value="READING">Lendo</option>
+                        <option value="READ">Concluído</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="synopsis">Sinopse</label>
+                    <textarea id="synopsis" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="cover-url">URL da capa</label>
+                    <input type="url" id="cover-url" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="cancel-book-modal" class="btn btn-secondary">
+                    Cancelar
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                    Salvar livro
+                </button>
+            </div>
+
+            <p id="form-message" class="form-message"></p>
+
+        </form>
+
+    </div>
+</div>
+
+
+    </main>
+    
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/library.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de leitura | Read.me</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/journal.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="../index.html" class="logo">Read<span>.me</span></a>
+
+        <nav class="navigation">
+            <a href="../index.html">Início</a>
+            <a href="library.html">Minha biblioteca</a>
+            <a href="journal.html" class="active">Diário de leitura</a>
+            <a href="stats.html">Estatísticas</a>
+        </nav>
+    </header>
+
+    <main class="journal-container">
+
+        <!-- CABEÇALHO -->
+        <section class="journal-header">
+            <div>
+                <p class="eyebrow">ANOTAÇÕES E CITAÇÕES</p>
+                <h1>Diário de leitura</h1>
+                <p>
+                    Registre pensamentos, trechos marcantes e reflexões
+                    que ficaram de cada livro.
+                </p>
+            </div>
+        </section>
+
+        <!-- FORMULÁRIO -->
+        <section class="journal-form-section card">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SEU ESPAÇO DE ESCRITA</p>
+                    <h2>Nova entrada</h2>
+                    <p>Guarde aquilo que merece ser lembrado.</p>
+                </div>
+            </div>
+
+            <form id="journal-form">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="entry-type">Tipo de registro</label>
+                        <select id="entry-type" class="form-control" required>
+                            <option value="NOTE">Anotação</option>
+                            <option value="QUOTE">Citação</option>
+                            <option value="REFLECTION">Reflexão</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entry-book">Livro</label>
+                        <select id="entry-book" class="form-control" required>
+                            <option value="">Carregando livros...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="entry-title">Título da entrada</label>
+                        <input
+                            type="text"
+                            id="entry-title"
+                            class="form-control"
+                            maxlength="200"
+                            placeholder="Ex.: Uma reflexão sobre o tempo"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="entry-page">Página (opcional)</label>
+                        <input
+                            type="number"
+                            id="entry-page"
+                            class="form-control"
+                            min="1"
+                            placeholder="Ex.: 45"
+                        >
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="entry-content">Conteúdo</label>
+                        <textarea
+                            id="entry-content"
+                            class="form-control"
+                            rows="6"
+                            placeholder="Escreva aqui suas ideias, trechos favoritos ou reflexões..."
+                            required
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        Salvar no diário
+                    </button>
+                </div>
+
+                <p id="form-message" class="form-message"></p>
+
+            </form>
+        </section>
+
+        <!-- ENTRADAS RECENTES -->
+        <section class="journal-entries-section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SUAS MEMÓRIAS LITERÁRIAS</p>
+                    <h2>Entradas recentes</h2>
+                </div>
+            </div>
+
+            <!-- FILTROS -->
+            <div class="journal-filters">
+
+                <div class="form-group">
+                    <label for="filter-entry-book">Livro</label>
+                    <select id="filter-entry-book" class="form-control">
+                        <option value="">Todos os livros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="filter-entry-type">Tipo</label>
+                    <select id="filter-entry-type" class="form-control">
+                        <option value="">Todos os registros</option>
+                        <option value="NOTE">Anotações</option>
+                        <option value="QUOTE">Citações</option>
+                        <option value="REFLECTION">Reflexões</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!-- LISTA DE ENTRADAS -->
+            <div id="journal-entries-list" class="journal-entries-grid">
+
+                <div class="empty-state">
+                    <p>Carregando seu diário...</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        
+<!-- MODAL DE EDIÇÃO -->
+<div class="modal-overlay" id="edit-entry-modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">SEU ESPAÇO DE ESCRITA</p>
+                <h2>Editar entrada</h2>
+                <p>Atualize suas memórias literárias.</p>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="close-edit-entry-modal"
+                aria-label="Fechar"
+            >
+                &times;
+            </button>
+        </div>
+
+        <form id="edit-entry-form">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="edit-entry-type">Tipo de registro</label>
+                    <select id="edit-entry-type" class="form-control" required>
+                        <option value="NOTE">Anotação</option>
+                        <option value="QUOTE">Citação</option>
+                        <option value="REFLECTION">Reflexão</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-entry-book">Livro</label>
+                    <select id="edit-entry-book" class="form-control" required>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="edit-entry-title">Título</label>
+                    <input
+                        type="text"
+                        id="edit-entry-title"
+                        class="form-control"
+                        maxlength="200"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-entry-page">Página (opcional)</label>
+                    <input
+                        type="number"
+                        id="edit-entry-page"
+                        class="form-control"
+                        min="1"
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="edit-entry-content">Conteúdo</label>
+                    <textarea
+                        id="edit-entry-content"
+                        class="form-control"
+                        rows="6"
+                        required
+                    ></textarea>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="cancel-edit-entry"
+                >
+                    Cancelar
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                    Salvar alterações
+                </button>
+            </div>
+
+            <p id="edit-entry-message" class="form-message"></p>
+
+        </form>
+
+    </div>
+</div>
+
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Read.me — cada livro deixa uma história.</p>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/journal.js"></script>
+
+</body>
+</html>

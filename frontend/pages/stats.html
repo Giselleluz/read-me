@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Estatísticas | Read.me</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/stats.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+        <a href="../index.html" class="logo">Read<span>.me</span></a>
+
+        <nav class="navigation">
+            <a href="../index.html">Início</a>
+            <a href="library.html">Minha biblioteca</a>
+            <a href="journal.html">Diário de leitura</a>
+            <a href="stats.html" class="active">Estatísticas</a>
+        </nav>
+    </header>
+
+    <main class="stats-container">
+
+        <!-- INTRODUÇÃO -->
+        <section class="stats-header">
+            <div>
+                <p class="eyebrow">SUA JORNADA LITERÁRIA</p>
+                <h1>Suas estatísticas</h1>
+                <p>
+                    Acompanhe suas conquistas, descubra seus hábitos
+                    e veja o quanto você já percorreu através dos livros.
+                </p>
+            </div>
+
+            <div class="year-selector">
+                <label for="stats-year">Ano de referência</label>
+                <select id="stats-year" class="form-control">
+                    <option value="2026">2026</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- INDICADORES PRINCIPAIS -->
+
+<section class="stats-summary">
+
+    <article class="card stat-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.7"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>
+                <path d="M8 7h8M8 11h8"/>
+            </svg>
+        </div>
+        <span>Livros concluídos</span>
+        <strong id="stat-books-read">--</strong>
+        <small>Livros finalizados</small>
+    </article>
+
+    <article class="card stat-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.7"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 7v5l3 2"/>
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M5.6 5.6 4 4"/>
+            </svg>
+        </div>
+        <span>Páginas lidas</span>
+        <strong id="stat-pages-read">--</strong>
+        <small>Total de páginas percorridas</small>
+    </article>
+
+    <article class="card stat-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.7"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/>
+            </svg>
+        </div>
+        <span>Avaliação média</span>
+        <strong id="stat-average-rating">--</strong>
+        <small>Média das suas avaliações</small>
+    </article>
+
+    <article class="card stat-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.7"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>
+                <path d="M12 7v6M9 10h6"/>
+            </svg>
+        </div>
+        <span>Livros em andamento</span>
+        <strong id="stat-books-reading">--</strong>
+        <small>Leituras não finalizadas</small>
+    </article>
+
+</section>
+
+        <!-- META ANUAL -->
+        <section class="card annual-goal-section">
+
+<div class="goal-heading">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">SEU OBJETIVO</p>
+            <h2>Meta anual de leitura</h2>
+            <p>Acompanhe seu progresso ao longo do ano.</p>
+        </div>
+    </div>
+
+    <button id="edit-goal-button" class="btn btn-secondary">
+        Definir meta
+    </button>
+</div>
+
+            <div class="goal-information">
+                <div>
+                    <strong id="goal-completed">0</strong>
+                    <span>livros concluídos</span>
+                </div>
+
+                <div>
+                    <strong id="goal-target">0</strong>
+                    <span>meta de livros</span>
+                </div>
+            </div>
+
+            <div class="goal-progress-track">
+                <div id="goal-progress-fill" class="goal-progress-fill"></div>
+            </div>
+
+            <p id="goal-progress-text" class="goal-progress-text">
+                Carregando sua meta...
+            </p>
+
+        </section>
+
+        <div id="goal-modal" class="modal">
+    <div class="modal-content">
+        <button type="button" id="close-goal-modal" class="modal-close">
+            &times;
+        </button>
+
+        <h2>Minha meta de leitura</h2>
+        <p>Quantos livros você deseja ler neste ano?</p>
+
+        <form id="goal-form">
+            <div class="form-group">
+                <label for="goal-year">Ano</label>
+                <input type="number" id="goal-year" class="form-control" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="goal-target-input">Quantidade de livros</label>
+                <input type="number" id="goal-target-input" class="form-control" min="1" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Salvar meta
+            </button>
+
+            <p id="goal-form-message" class="form-message"></p>
+        </form>
+    </div>
+</div>
+
+        <!-- GRÁFICOS -->
+        <section class="stats-charts">
+
+            <article class="card chart-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">SEU RITMO</p>
+                        <h2>Evolução das leituras</h2>
+                        <p>Quantidade de livros concluídos por mês.</p>
+                    </div>
+                </div>
+
+                <div id="monthly-chart" class="chart-container">
+                    <p>Carregando dados...</p>
+                </div>
+            </article>
+
+            <article class="card chart-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">SEUS GOSTOS</p>
+                        <h2>Gêneros favoritos</h2>
+                        <p>Distribuição dos livros por gênero.</p>
+                    </div>
+                </div>
+
+                <div id="genre-chart" class="chart-container">
+                    <p>Carregando dados...</p>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- RESUMO DA BIBLIOTECA -->
+        <section class="card reading-overview">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">VISÃO GERAL</p>
+                    <h2>Sua biblioteca em números</h2>
+                </div>
+            </div>
+
+            <div class="overview-grid">
+
+                <div class="overview-item">
+                    <span>Quero ler</span>
+                    <strong id="stat-want-to-read">--</strong>
+                </div>
+
+                <div class="overview-item">
+                    <span>Lendo atualmente</span>
+                    <strong id="stat-currently-reading">--</strong>
+                </div>
+
+                <div class="overview-item">
+                    <span>Concluídos</span>
+                    <strong id="stat-finished">--</strong>
+                </div>
+
+                <div class="overview-item">
+                    <span>Total de livros</span>
+                    <strong id="stat-total-books">--</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <p>© 2026 Read.me — cada livro deixa uma história.</p>
+    </footer>
+    
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/stats.js"></script>
+
+</body>
+</html>

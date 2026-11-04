@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read.me — seu diário pessoal de leitura.">
+    <title>Read.me | Minha jornada literária</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">Read<span>.me</span></a>
+
+        <nav class="navigation">
+            <a href="index.html" class="active">Início</a>
+            <a href="pages/library.html">Biblioteca</a>
+            <a href="pages/journal.html">Diário</a>
+            <a href="pages/stats.html">Estatísticas</a>
+        </nav>
+    </header>
+
+
+<main class="home-container">
+
+    <!-- Destaque para adicionar livro -->
+    <section class="new-reading-banner">
+        <div>
+            <p class="eyebrow">SUA PRÓXIMA HISTÓRIA COMEÇA AQUI</p>
+            <h2>Comece uma nova leitura</h2>
+            <p>Adicione um livro à sua estante e acompanhe o progresso.</p>
+        </div>
+
+        <a href="pages/library.html" class="btn btn-primary">
+            Ir para biblioteca →
+        </a>
+    </section>
+
+    <!-- Painel de leitura -->
+    <section class="reading-summary">
+        <div class="welcome-heading">
+            <p class="eyebrow">PAINEL DE LEITURA</p>
+            <h1>Bem-vinda de volta ao seu diário literário.</h1>
+            <p>
+                Cada livro deixa uma história — e cada leitor tem a sua própria jornada.
+                Aqui está o resumo do seu momento de leitura.
+            </p>
+        </div>
+
+        <div class="summary-grid">
+            <article class="card summary-card">
+                <span class="summary-label">Livros lidos</span>
+                <strong id="books-read">0</strong>
+            </article>
+
+            <article class="card summary-card">
+                <span class="summary-label">Lendo agora</span>
+                <strong id="books-reading">0</strong>
+            </article>
+
+            <article class="card summary-card">
+                <span class="summary-label">Páginas lidas</span>
+                <strong id="pages-read">0</strong>
+            </article>
+
+            <article class="card summary-card">
+                <span class="summary-label">Avaliação média</span>
+                <strong id="average-rating">0,0</strong>
+                <span class="rating-stars">★★★★★</span>
+            </article>
+        </div>
+    </section>
+
+    <!-- Livros em andamento -->
+    <section class="home-section">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">SUAS LEITURAS ATUAIS</p>
+                <h2>Continue de onde parou</h2>
+            </div>
+
+            <a href="pages/library.html" class="text-link">Ver biblioteca →</a>
+        </div>
+
+        <div id="continue-reading-list" class="continue-reading-list">
+            <div class="empty-state">
+                <p>Nenhuma leitura em andamento.</p>
+                <a href="pages/library.html">Que tal escolher o próximo livro?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meta anual -->
+    <section class="home-section">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">SEU DESAFIO LITERÁRIO</p>
+                <h2>Meta do ano</h2>
+            </div>
+        </div>
+
+        <article class="card yearly-goal">
+    <div class="goal-heading">
+        <div>
+            <h3>Minha meta de <span id="goal-year">2026</span></h3>
+            <p id="goal-description">
+                Acompanhe seu progresso literário ao longo do ano.
+            </p>
+        </div>
+
+        <span class="goal-percentage" id="goal-percentage">0%</span>
+    </div>
+
+    <div class="progress-track">
+        <div
+            class="progress-fill"
+            id="goal-progress-fill"
+            style="width: 0%">
+        </div>
+    </div>
+
+    <div class="goal-footer">
+        <strong id="goal-progress-count">0/0</strong>
+        <span>Livros concluídos no ano.</span>
+    </div>
+</article>
+    </section>
+
+    <!-- Atividade recente -->
+    <section class="home-section">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">SUAS MEMÓRIAS LITERÁRIAS</p>
+                <h2>Atividade recente</h2>
+            </div>
+
+            <a href="pages/journal.html" class="text-link">Abrir diário →</a>
+        </div>
+
+        <div id="recent-activity-list" class="activity-list">
+            <div class="empty-state">
+                <p>Suas anotações, citações e resenhas aparecerão aqui.</p>
+                <a href="pages/journal.html">Explorar diário de leitura</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

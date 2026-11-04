@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalhes do livro | Read.me</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/book.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="../index.html" class="logo">Read<span>.me</span></a>
+
+        <nav class="navigation">
+            <a href="../index.html">Início</a>
+            <a href="library.html" class="active">Biblioteca</a>
+            <a href="journal.html">Diário</a>
+            <a href="stats.html">Estatísticas</a>
+        </nav>
+    </header>
+
+    <main class="book-details-container">
+
+        <a href="library.html" class="back-link">
+            ← Voltar para biblioteca
+        </a>
+
+        <section class="book-details">
+
+            <div class="details-cover">
+                <img id="book-cover" alt="Capa do livro">
+                <div id="cover-placeholder" class="cover-placeholder">
+                    <span>Read.me</span>
+                </div>
+            </div>
+
+            <div class="details-content">
+
+                <span id="book-status" class="book-status"></span>
+
+                <h1 id="book-title">Carregando livro...</h1>
+
+                <p id="book-author" class="details-author"></p>
+
+                <span id="book-genre" class="details-genre"></span>
+
+                <div class="details-progress">
+
+    <div class="progress-heading">
+        <h2>Seu progresso</h2>
+        <strong id="progress-percentage">0%</strong>
+    </div>
+
+    <div class="progress-track">
+        <div id="progress-fill" class="progress-fill"></div>
+    </div>
+
+    <p id="progress-pages"></p>
+
+    <!-- Atualização do progresso -->
+    <div class="progress-update">
+
+        <h3>Atualizar minha leitura</h3>
+
+        <p>Em qual página você está agora?</p>
+
+        <form id="progress-form" class="progress-form">
+
+            <div class="progress-input-group">
+
+                <input
+                    type="number"
+                    id="update-current-page"
+                    class="form-control"
+                    min="0"
+                    placeholder="Página atual"
+                    required
+                >
+
+                <button type="submit" class="btn btn-primary">
+                    Atualizar progresso
+                </button>
+
+            </div>
+
+            <p id="progress-message" class="progress-message"></p>
+
+        </form>
+
+    </div>
+
+</div>
+
+                <div class="details-dates">
+                    <p>Início da leitura: <span id="started-at">Não informado</span></p>
+                    <p>Conclusão: <span id="finished-at">Não informado</span></p>
+                </div>
+
+                <div class="details-synopsis">
+                    <h2>Sinopse</h2>
+                    <p id="book-synopsis">Nenhuma sinopse cadastrada.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        
+<section class="book-review-section">
+
+    <div class="review-heading">
+        <p class="eyebrow">SUA EXPERIÊNCIA</p>
+        <h2>Minha avaliação</h2>
+        <p>Registre o que achou dessa leitura.</p>
+    </div>
+
+    <form id="review-form" class="review-form">
+
+        <div class="form-group">
+            <label>Como você avalia este livro?</label>
+
+            <div class="rating-stars" id="rating-stars">
+                <button type="button" class="rating-star" data-rating="1" aria-label="1 estrela">★</button>
+                <button type="button" class="rating-star" data-rating="2" aria-label="2 estrelas">★</button>
+                <button type="button" class="rating-star" data-rating="3" aria-label="3 estrelas">★</button>
+                <button type="button" class="rating-star" data-rating="4" aria-label="4 estrelas">★</button>
+                <button type="button" class="rating-star" data-rating="5" aria-label="5 estrelas">★</button>
+            </div>
+
+            <p id="rating-message" class="rating-message">
+                Selecione uma nota de 1 a 5.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <label for="review-text">Minha resenha</label>
+            <textarea
+                id="review-text"
+                class="form-control"
+                rows="5"
+                placeholder="O que essa história despertou em você?"
+            ></textarea>
+        </div>
+
+        <div class="review-actions">
+            <button type="submit" id="save-review" class="btn btn-primary">
+                Salvar avaliação
+            </button>
+
+            <button
+                type="button"
+                id="delete-review"
+                class="btn btn-secondary"
+                style="display: none;"
+            >
+                Excluir avaliação
+            </button>
+        </div>
+
+        <p id="review-form-message" class="form-message"></p>
+
+    </form>
+
+</section>
+
+
+        <div class="details-actions">
+            <button id="edit-book" class="btn btn-primary">
+                Editar livro
+            </button>
+
+            <button id="delete-book" class="btn btn-secondary">
+                Excluir livro
+            </button>
+        </div>
+
+        <p id="details-message" class="details-message"></p>
+
+        
+<!-- Modal de edição -->
+<div id="edit-book-modal" class="modal-overlay">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">SUA BIBLIOTECA</p>
+                <h2>Editar livro</h2>
+                <p>Atualize as informações da sua leitura.</p>
+            </div>
+
+            <button type="button" id="close-edit-modal" class="modal-close">
+                &times;
+            </button>
+        </div>
+
+        <form id="edit-book-form">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="edit-title">Título *</label>
+                    <input type="text" id="edit-title"
+                           class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-author">Autor *</label>
+                    <input type="text" id="edit-author"
+                           class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-genre">Gênero</label>
+                    <input type="text" id="edit-genre"
+                           class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-total-pages">Número de páginas *</label>
+                    <input type="number" id="edit-total-pages"
+                           class="form-control" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-current-page">Página atual</label>
+                    <input type="number" id="edit-current-page"
+                           class="form-control" min="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-status">Status da leitura</label>
+                    <select id="edit-status" class="form-control">
+                        <option value="WANT_TO_READ">Quero ler</option>
+                        <option value="READING">Lendo</option>
+                        <option value="READ">Concluído</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-started-at">Início da leitura</label>
+                    <input type="date" id="edit-started-at"
+                           class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-finished-at">Conclusão da leitura</label>
+                    <input type="date" id="edit-finished-at"
+                           class="form-control">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="edit-synopsis">Sinopse</label>
+                    <textarea id="edit-synopsis"
+                              class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="edit-cover-url">URL da capa</label>
+                    <input type="url" id="edit-cover-url"
+                           class="form-control">
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="cancel-edit-modal"
+                        class="btn btn-secondary">
+                    Cancelar
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                    Salvar alterações
+                </button>
+            </div>
+
+            <p id="edit-form-message" class="form-message"></p>
+
+        </form>
+
+    </div>
+</div>
+
+
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/book.js"></script>
+
+</body>
+</html>

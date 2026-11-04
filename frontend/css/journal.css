@@ -1,0 +1,347 @@
+
+/* CONTAINER PRINCIPAL */
+.journal-container {
+    width: min(1000px, 86%);
+    margin: 50px auto;
+}
+
+/* CABEÇALHO */
+.journal-header {
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    color: var(--color-primary);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.journal-header h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.journal-header > div > p:last-child {
+    color: var(--color-text-light);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* TÍTULOS DAS SEÇÕES */
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.section-heading p:not(.eyebrow) {
+    color: var(--color-text-light);
+    font-size: 12px;
+}
+
+/* FORMULÁRIO */
+.journal-form-section {
+    padding: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.7;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+
+.form-message {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+/* SEÇÃO DE ENTRADAS */
+.journal-entries-section {
+    margin-top: 55px;
+}
+
+.journal-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.journal-filters .form-group {
+    width: 220px;
+}
+
+/* GRID DE ENTRADAS */
+.journal-entries-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 40px 20px;
+    text-align: center;
+    background: var(--color-white);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--border-radius);
+    color: var(--color-text-light);
+    font-size: 13px;
+}
+
+.empty-state p + p {
+    margin-top: 8px;
+}
+
+/* RODAPÉ */
+.footer {
+    padding: 25px;
+    margin-top: 70px;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    font-size: 11px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 700px) {
+    .journal-container {
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    .journal-header h1 {
+        font-size: 29px;
+    }
+
+    .journal-form-section {
+        padding: 22px;
+    }
+
+    .form-grid,
+    .journal-entries-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .journal-filters {
+        flex-direction: column;
+    }
+
+    .journal-filters .form-group {
+        width: 100%;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+
+/* INFORMAÇÕES DA ENTRADA */
+.entry-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+}
+
+.entry-metadata span {
+    color: var(--color-text-light);
+    font-size: 11px;
+}
+
+
+/* CARDS DO DIÁRIO */
+.journal-entry-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 25px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.journal-entry-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(48, 40, 58, 0.10);
+}
+
+/* TIPO DE REGISTRO */
+.entry-type {
+    align-self: flex-start;
+    padding: 5px 11px;
+    background: var(--color-lavender);
+    color: var(--color-text);
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* TÍTULO */
+.journal-entry-card h3 {
+    font-family: var(--font-title);
+    font-size: 19px;
+    color: var(--color-text);
+    line-height: 1.4;
+}
+
+/* LIVRO */
+.entry-book {
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* CONTEÚDO */
+.entry-content {
+    color: var(--color-text-light);
+    font-size: 12px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+/* PÁGINA E DATA */
+.entry-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+}
+
+.entry-metadata span {
+    color: var(--color-text-light);
+    font-size: 11px;
+}
+
+
+/* MODAL DE EDIÇÃO */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    padding: 25px;
+    background: rgba(48, 40, 58, 0.55);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: min(650px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    background: var(--color-background);
+    border-radius: 16px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+.modal-header p:not(.eyebrow) {
+    color: var(--color-text-light);
+    font-size: 12px;
+}
+
+.modal-close {
+    border: none;
+    background: transparent;
+    color: var(--color-text-light);
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+    .modal-overlay {
+        padding: 12px;
+    }
+
+    .modal-content {
+        padding: 22px;
+    }
+}
+
+/* AÇÕES DAS ENTRADAS */
+.entry-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.entry-actions .btn {
+    padding: 8px 15px;
+    font-size: 11px;
+}
+
+.btn-delete {
+    background: #F7E6E6;
+    color: #A34F4F;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.btn-delete:hover {
+    background: #F0D4D4;
+}

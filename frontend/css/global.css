@@ -1,0 +1,55 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Cores principais */
+    --color-primary: #7962A6;
+    --color-secondary: #B7A3D5;
+    --color-lavender: #E9E0F2;
+
+    /* Cores neutras */
+    --color-background: #FAF7F2;
+    --color-white: #FFFFFF;
+    --color-text: #30283A;
+    --color-text-light: #817989;
+    --color-border: #E8E2EA;
+
+    /* Tipografia */
+    --font-title: 'Lora', serif;
+    --font-body: 'Poppins', sans-serif;
+
+    /* Outros */
+    --border-radius: 12px;
+    --shadow: 0 4px 16px rgba(48, 40, 58, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: 600;
+}
+
+button, input, textarea, select {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
